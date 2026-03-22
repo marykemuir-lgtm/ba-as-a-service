@@ -1,5 +1,5 @@
 /*
- * HowItWorks.tsx — BA-as-a-Service
+ * HowItWorks.tsx — Scoped Consulting
  * Design: Editorial Minimalism — vertical timeline, alternating content, step numbers
  */
 import { Link } from "wouter";
@@ -101,7 +101,7 @@ export default function HowItWorks() {
               </span>
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: "oklch(0.42 0.01 260)" }}>
-              Every engagement starts with understanding your context. Here's how a typical BA-as-a-Service engagement works — from first conversation to delivery.
+              Every engagement starts with understanding your context. Here's how a typical Scoped Consulting engagement works — from first conversation to delivery.
             </p>
           </div>
         </div>
@@ -230,7 +230,7 @@ export default function HowItWorks() {
               Step one is a conversation.
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: "oklch(0.42 0.01 260)" }}>
-              Schedule your free 30-minute discovery call with one of our consultants and find out how BA-as-a-Service can help your organisation move faster and build better.
+              Schedule your free 30-minute discovery call with one of our consultants and find out how Scoped Consulting can help your organisation move faster and build better.
             </p>
             <Link href="/book" className="flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded transition-all duration-200 inline-flex" style={{
               background: "oklch(0.46 0.18 260)",
