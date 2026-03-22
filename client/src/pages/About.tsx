@@ -55,7 +55,7 @@ export default function About() {
             <div className="reveal">
               <p className="section-label mb-4">About</p>
               <h1 className="display-headline text-4xl lg:text-5xl mb-6">
-                BA-as-a-Service was founded to help organisations access senior expertise
+                Scoped Consulting was founded to help organisations access senior expertise
                 <span className="block italic" style={{ color: "oklch(0.46 0.18 260)" }}>
                   without the overhead.
                 </span>
@@ -63,11 +63,11 @@ export default function About() {
               <div className="flex gap-4 mb-6">
                 <div className="accent-line h-16" />
                 <p className="text-lg leading-relaxed" style={{ color: "oklch(0.42 0.01 260)" }}>
-                  BA-as-a-Service was founded by Maryke-Lee Muir, a Delivery Lead and Business Analysis specialist with over a decade of experience supporting complex technology initiatives and product delivery programmes.
+                  Scoped Consulting was founded by Maryke-Lee Muir, a Delivery Lead and Business Analysis specialist with over a decade of experience supporting complex technology initiatives and product delivery programmes.
                 </p>
               </div>
               <p className="text-base leading-relaxed mb-6" style={{ color: "oklch(0.42 0.01 260)" }}>
-                Maryke-Lee created BA-as-a-Service to help organisations access senior Business Analysis expertise without the cost of hiring a full-time resource. Our consultants bring the same level of rigour and strategic thinking you'd expect from a senior hire, but on a flexible, fractional basis.
+                Maryke-Lee created Scoped Consulting to help organisations access senior Business Analysis expertise without the cost of hiring a full-time resource. Our consultants bring the same level of rigour and strategic thinking you'd expect from a senior hire, but on a flexible, fractional basis.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "oklch(0.42 0.01 260)" }}>
                 Whether you're a startup validating your first product, a scale-up managing a complex backlog, or an enterprise team launching a new initiative — we provide the structured thinking and hands-on delivery support you need.
@@ -83,7 +83,7 @@ export default function About() {
                 />
                 <img
                   src={PORTRAIT}
-                  alt="Maryke-Lee Muir — Founder, BA-as-a-Service"
+                  alt="Maryke-Lee Muir — Founder, Scoped Consulting"
                   className="relative z-10 rounded-2xl shadow-lg"
                   style={{ maxWidth: "340px", width: "100%" }}
                 />
