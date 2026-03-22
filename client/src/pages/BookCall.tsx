@@ -1,5 +1,5 @@
 /*
- * BookCall.tsx — BA-as-a-Service
+ * BookCall.tsx — Scoped Consulting
  * Design: Editorial Minimalism — two-column layout, contact form, trust signals
  */
 import { useState } from "react";
@@ -118,7 +118,7 @@ export default function BookCall() {
                   {
                     icon: MessageSquare,
                     title: "Honest advice",
-                    desc: "Our consultant will tell you honestly whether and how BA-as-a-Service can help.",
+                    desc: "Our consultant will tell you honestly whether and how Scoped Consulting can help.",
                   },
                   {
                     icon: Calendar,
