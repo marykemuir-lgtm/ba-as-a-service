@@ -1,5 +1,5 @@
 /*
- * Layout.tsx — BA-as-a-Service
+ * Layout.tsx — Scoped Consulting
  * Design: Editorial Minimalism — slim top nav, left-aligned logo, CTA right
  * Colors: warm white bg, charcoal text, slate blue accent
  */
@@ -57,7 +57,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   className="font-bold text-sm tracking-tight"
                   style={{ fontFamily: "var(--font-display)", color: "oklch(0.18 0.01 260)" }}
                 >
-                  BA-as-a-Service Consulting
+                  Scoped Consulting
                 </span>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className="font-bold text-sm"
                 style={{ fontFamily: "var(--font-display)", color: "oklch(0.9 0.005 85)" }}
               >
-                BA-as-a-Service Consulting
+                Scoped Consulting
               </span>
               </div>
               <p className="text-sm leading-relaxed" style={{ color: "oklch(0.65 0.01 260)" }}>
@@ -251,7 +251,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             style={{ borderColor: "oklch(0.22 0.01 260)" }}
           >
             <p className="text-xs" style={{ color: "oklch(0.45 0.01 260)" }}>
-              © {new Date().getFullYear()} BA-as-a-Service Consulting. All rights reserved.
+              © {new Date().getFullYear()} Scoped Consulting. All rights reserved.
             </p>
             <p className="text-xs" style={{ color: "oklch(0.45 0.01 260)" }}>
               Fractional BA · Product Owner · Delivery Lead
