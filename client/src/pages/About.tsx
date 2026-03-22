@@ -1,5 +1,5 @@
 /*
- * About.tsx — BA-as-a-Service
+ * About.tsx — Scoped Consulting
  * Design: Editorial Minimalism — split layout, portrait illustration, warm tone
  */
 import { Link } from "wouter";
