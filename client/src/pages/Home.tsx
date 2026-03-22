@@ -1,5 +1,5 @@
 /*
- * Home.tsx — BA-as-a-Service
+ * Home.tsx — Scoped Consulting
  * Design: Editorial Minimalism — asymmetric hero, left-anchored content
  * Sections: Hero, Problems, Who We Work With, Services Overview, How It Works Teaser, CTA
  */
