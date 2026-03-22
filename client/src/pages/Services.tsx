@@ -1,5 +1,5 @@
 /*
- * Services.tsx — BA-as-a-Service
+ * Services.tsx — Scoped Consulting
  * Design: Editorial Minimalism — section labels, vertical accent lines, card grid
  */
 import { Link } from "wouter";
@@ -120,7 +120,7 @@ export default function Services() {
               </span>
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: "oklch(0.42 0.01 260)" }}>
-              From discovery to delivery, BA-as-a-Service provides the structured thinking and hands-on support your organisation needs — without the overhead of full-time hires.
+              From discovery to delivery, Scoped Consulting provides the structured thinking and hands-on support your organisation needs — without the overhead of full-time hires.
             </p>
           </div>
         </div>
