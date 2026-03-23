@@ -175,6 +175,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   <text x="46" y="18" fontFamily="Georgia, serif" fontSize="14" fontWeight="500" fill="white">Scoped</text>
   <text x="46" y="35" fontFamily="Georgia, serif" fontSize="11" letterSpacing="2.5" fill="#6b8ef0">CONSULTING</text>
 </svg>
+  </div>
               <p className="text-sm leading-relaxed" style={{ color: "oklch(0.65 0.01 260)" }}>
                 Fractional Business Analyst, Product Owner, and Delivery Lead services for startups and digital product companies.
               </p>
