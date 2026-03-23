@@ -46,20 +46,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Logo */}
             <Link href="/">
               <div className="flex items-center gap-2.5">
-                <div
-                  className="w-7 h-7 rounded-sm flex items-center justify-center"
-                  style={{ background: "oklch(0.46 0.18 260)" }}
-                >
-                  <span className="text-white font-bold text-xs" style={{ fontFamily: "var(--font-body)" }}>BA</span>
-                </div>
-                <div>
-                <span
-                  className="font-bold text-sm tracking-tight"
-                  style={{ fontFamily: "var(--font-display)", color: "oklch(0.18 0.01 260)" }}
-                >
-                  Scoped Consulting
-                </span>
-                </div>
+                <svg width="160" height="36" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 4 L4 4 L4 40 L10 40" stroke="#2d5be3" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M26 4 L32 4 L32 40 L26 40" stroke="#2d5be3" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <text x="46" y="18" fontFamily="Georgia, serif" fontSize="14" fontWeight="500" fill="#111827">Scoped</text>
+  <text x="46" y="35" fontFamily="Georgia, serif" fontSize="11" letterSpacing="2.5" fill="#2d5be3">CONSULTING</text>
+</svg>
               </div>
             </Link>
 
