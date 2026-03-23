@@ -169,19 +169,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2.5 mb-4">
-                <div
-                  className="w-7 h-7 rounded-sm flex items-center justify-center"
-                  style={{ background: "oklch(0.46 0.18 260)" }}
-                >
-                  <span className="text-white font-bold text-xs">BA</span>
-                </div>
-              <span
-                className="font-bold text-sm"
-                style={{ fontFamily: "var(--font-display)", color: "oklch(0.9 0.005 85)" }}
-              >
-                Scoped Consulting
-              </span>
-              </div>
+                <svg width="160" height="36" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 4 L4 4 L4 40 L10 40" stroke="#6b8ef0" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M26 4 L32 4 L32 40 L26 40" stroke="#6b8ef0" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  <text x="46" y="18" fontFamily="Georgia, serif" fontSize="14" fontWeight="500" fill="white">Scoped</text>
+  <text x="46" y="35" fontFamily="Georgia, serif" fontSize="11" letterSpacing="2.5" fill="#6b8ef0">CONSULTING</text>
+</svg>
               <p className="text-sm leading-relaxed" style={{ color: "oklch(0.65 0.01 260)" }}>
                 Fractional Business Analyst, Product Owner, and Delivery Lead services for startups and digital product companies.
               </p>
