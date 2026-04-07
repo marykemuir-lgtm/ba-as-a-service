@@ -150,7 +150,7 @@ export default function About() {
                   src={PORTRAIT}
                   alt="Maryke-Lee Muir — Founder, Scoped Consulting"
                   className="w-full object-cover"
-                  style={{ maxHeight: "360px", objectPosition: "top" }}
+                  style={{ maxHeight: "360px", objectPosition: "center" }}
                 />
                 <div className="p-5 text-center">
                   <p className="text-sm font-semibold mb-1" style={{ color: "white" }}>
