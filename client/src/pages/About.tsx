@@ -1,12 +1,12 @@
 /*
  * About.tsx — Scoped Consulting
- * Design: Dark theme — bold opening statement, founder story, values, expertise tags
+ * Design: Dark theme — bold opening, full-size portrait, values, expertise tags
  */
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const PORTRAIT = "/images/portrait.jpg";
+const PORTRAIT = "/images/Maryke_Professional_Headshot.png";
 
 const values = [
   {
@@ -99,10 +99,10 @@ export default function About() {
       {/* Founder */}
       <section className="py-20" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
             {/* Text */}
-            <div className="reveal lg:col-span-7">
+            <div className="reveal">
               <p className="text-xs font-semibold mb-4" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
                 The Founder
               </p>
@@ -140,8 +140,8 @@ export default function About() {
               </div>
             </div>
 
-            {/* Portrait card */}
-            <div className="reveal lg:col-span-5">
+            {/* Portrait — full size */}
+            <div className="reveal">
               <div
                 className="rounded-2xl overflow-hidden"
                 style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
@@ -149,10 +149,13 @@ export default function About() {
                 <img
                   src={PORTRAIT}
                   alt="Maryke-Lee Muir — Founder, Scoped Consulting"
-                  className="w-full object-cover"
-                  style={{ maxHeight: "360px", objectPosition: "top" }}
+                  className="w-full"
+                  style={{ display: "block" }}
                 />
-                <div className="p-5 text-center">
+                <div
+                  className="px-6 py-5 text-center"
+                  style={{ borderTop: "0.5px solid #1e2a40" }}
+                >
                   <p className="text-sm font-semibold mb-1" style={{ color: "white" }}>
                     Maryke-Lee Muir
                   </p>
@@ -183,7 +186,7 @@ export default function About() {
             {values.map((value, i) => (
               <div
                 key={value.title}
-                className="reveal p-6 rounded-xl"
+                className="reveal p-6"
                 style={{
                   background: "#0d1220",
                   border: "0.5px solid #1e2a40",
@@ -211,7 +214,7 @@ export default function About() {
       <section className="py-16" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
         <div className="container">
           <div className="reveal mb-8">
-            <p className="text-xs font-semibold mb-3" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
+            <p className="text-xs font-semibold" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
               Areas of Expertise
             </p>
           </div>
