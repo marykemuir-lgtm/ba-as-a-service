@@ -1,13 +1,11 @@
 /*
  * BookCall.tsx — Scoped Consulting
- * Design: Editorial Minimalism — two-column layout, contact form, trust signals
+ * Design: Dark theme — dot pattern hero, form + email option, trust signals
  */
 import { useState } from "react";
-import { CheckCircle2, Clock, Calendar, MessageSquare } from "lucide-react";
+import { CheckCircle2, Clock, Calendar, MessageSquare, Mail } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { toast } from "sonner";
-
-const CTA_BG = "/images/cta-bg.webp";
 
 const serviceOptions = [
   "Business Analysis & Requirements",
@@ -18,6 +16,24 @@ const serviceOptions = [
   "Delivery Lead & Project Oversight",
   "Not sure — I need advice",
 ];
+
+const DotPattern = () => (
+  <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden">
+    <svg
+      className="absolute right-0 top-0 w-full h-full"
+      style={{ opacity: 0.12 }}
+      viewBox="0 0 400 400"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="#4a6cf7"/>
+        </pattern>
+      </defs>
+      <rect width="400" height="400" fill="url(#dots)"/>
+    </svg>
+  </div>
+);
 
 export default function BookCall() {
   const revealRef = useScrollReveal();
@@ -45,9 +61,7 @@ export default function BookCall() {
     try {
       const response = await fetch("https://formspree.io/f/mreyqjol", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -59,104 +73,113 @@ export default function BookCall() {
       if (response.ok) {
         setLoading(false);
         setSubmitted(true);
-        toast.success("Request submitted! Check your email for confirmation.");
+        toast.success("Request submitted! We'll be in touch within one business day.");
       } else {
         throw new Error("Form submission failed");
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to submit form. Please try again.");
+      toast.error("Failed to submit. Please try again or email us directly.");
       console.error(error);
     }
   };
 
+  const inputStyle = {
+    width: "100%",
+    padding: "10px 14px",
+    background: "#131a2e",
+    border: "0.5px solid #1e2a40",
+    borderRadius: "8px",
+    fontSize: "13px",
+    color: "#94a3b8",
+    outline: "none",
+    fontFamily: "var(--font-body)",
+    boxSizing: "border-box" as const,
+  };
+
+  const labelStyle = {
+    display: "block",
+    fontSize: "10px",
+    fontWeight: 500,
+    letterSpacing: "0.1em",
+    textTransform: "uppercase" as const,
+    color: "#64748b",
+    marginBottom: "6px",
+  };
+
   return (
-    <div ref={revealRef}>
-      {/* Page header */}
+    <div ref={revealRef} style={{ background: "#080b12" }}>
+
+      {/* Hero */}
       <section
-        className="relative py-20 lg:py-28 overflow-hidden"
-        style={{ background: "oklch(0.16 0.01 260)" }}
+        className="relative py-24 lg:py-32 overflow-hidden"
+        style={{ background: "#080b12" }}
       >
-        <img
-          src={CTA_BG}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
+        <DotPattern />
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <p className="section-label mb-4" style={{ color: "oklch(0.55 0.12 260)" }}>
-              Speak With a Consultant
+            <p className="text-xs font-semibold mb-4" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
+              Let's Talk
             </p>
             <h1
               className="display-headline text-4xl lg:text-5xl mb-6"
-              style={{ color: "white" }}
+              style={{ lineHeight: 1.1, color: "white" }}
             >
-              Schedule a discovery session.
+              Book a free{" "}
+              <span style={{ color: "#4a6cf7" }}>30-minute discovery call.</span>
             </h1>
-            <p className="text-lg leading-relaxed" style={{ color: "oklch(0.72 0.01 260)" }}>
-              Fill in the form below and one of our consultants will be in touch within one business day to confirm your discovery call. It's free, it's 30 minutes, and there's no commitment.
+            <p
+              className="text-lg leading-relaxed max-w-xl"
+              style={{ color: "#94a3b8", fontFamily: "var(--font-body)" }}
+            >
+              No pitch, no pressure. Fill in the form and we'll be in touch within one business day — or just send us an email directly.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main content */}
-      <section className="py-20" style={{ background: "oklch(0.985 0.004 85)" }}>
+      <section className="py-16" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Left: info */}
-            <div className="lg:col-span-2 reveal">
-              <p className="section-label mb-5">What to expect</p>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
 
-              <div className="flex flex-col gap-6 mb-10">
-                {[
-                  {
-                    icon: Clock,
-                    title: "30 minutes",
-                    desc: "A focused conversation — no fluff, no hard sell.",
-                  },
-                  {
-                    icon: MessageSquare,
-                    title: "Honest advice",
-                    desc: "Our consultant will tell you honestly whether and how Scoped Consulting can help.",
-                  },
-                  {
-                    icon: Calendar,
-                    title: "Flexible scheduling",
-                    desc: "Available across AEST, NZST, and UK/EU time zones.",
-                  },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.title} className="flex gap-4">
-                      <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                        style={{ background: "oklch(0.94 0.06 260 / 0.15)" }}
-                      >
-                        <Icon size={18} style={{ color: "oklch(0.46 0.18 260)" }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-0.5" style={{ color: "oklch(0.18 0.01 260)" }}>
-                          {item.title}
-                        </p>
-                        <p className="text-sm leading-relaxed" style={{ color: "oklch(0.52 0.01 260)" }}>
-                          {item.desc}
-                        </p>
-                      </div>
+            {/* Left — info */}
+            <div className="lg:col-span-2 reveal flex flex-col gap-5">
+              <p className="text-xs font-semibold mb-1" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
+                What to expect
+              </p>
+
+              {[
+                { icon: Clock, title: "30 minutes", desc: "A focused conversation — no fluff, no hard sell." },
+                { icon: MessageSquare, title: "Honest advice", desc: "We'll tell you honestly whether and how we can help — no upsell." },
+                { icon: Calendar, title: "Flexible scheduling", desc: "Available across AEST and NZST time zones." },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="flex gap-3 items-start">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: "#131a2e" }}
+                    >
+                      <Icon size={14} style={{ color: "#4a6cf7" }} />
                     </div>
-                  );
-                })}
-              </div>
+                    <div>
+                      <p className="text-sm font-semibold mb-0.5" style={{ color: "white" }}>{item.title}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "#64748b" }}>{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
 
+              {/* Good to know */}
               <div
-                className="p-5 rounded-lg border"
-                style={{
-                  background: "oklch(0.97 0.003 85)",
-                  borderColor: "oklch(0.88 0.006 85)",
-                }}
+                className="p-5 rounded-xl"
+                style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
               >
-                <p className="section-label mb-3">Good to know</p>
-                <ul className="flex flex-col gap-2.5">
+                <p className="text-xs font-semibold mb-3" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  Good to know
+                </p>
+                <ul className="flex flex-col gap-2">
                   {[
                     "No commitment required after the call",
                     "Proposal sent within 2 business days if relevant",
@@ -164,74 +187,79 @@ export default function BookCall() {
                     "Fully remote — works across time zones",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2
-                        size={14}
-                        className="shrink-0 mt-0.5"
-                        style={{ color: "oklch(0.46 0.18 260)" }}
-                      />
-                      <span className="text-sm leading-snug" style={{ color: "oklch(0.38 0.01 260)" }}>
-                        {item}
-                      </span>
+                      <CheckCircle2 size={12} className="shrink-0 mt-0.5" style={{ color: "#4a6cf7" }} />
+                      <span className="text-xs leading-relaxed" style={{ color: "#94a3b8" }}>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
+
+              {/* Email option */}
+              <div
+                className="p-4 rounded-xl flex items-center gap-4"
+                style={{ background: "#0f1520", border: "1.5px solid #1e2a40" }}
+              >
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ background: "#131a2e" }}
+                >
+                  <Mail size={14} style={{ color: "#4a6cf7" }} />
+                </div>
+                <div>
+                  <p className="text-xs mb-1" style={{ color: "#64748b" }}>Prefer to email directly?</p>
+                  <a
+                    href="mailto:hello@scopedconsulting.co.nz"
+                    className="text-sm font-semibold"
+                    style={{ color: "#4a6cf7", textDecoration: "none" }}
+                  >
+                    hello@scopedconsulting.co.nz
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* Right: form */}
+            {/* Right — form */}
             <div className="lg:col-span-3 reveal" style={{ transitionDelay: "100ms" }}>
               {submitted ? (
                 <div
-                  className="p-10 rounded-xl border text-center"
-                  style={{
-                    background: "oklch(0.99 0.002 85)",
-                    borderColor: "oklch(0.88 0.006 85)",
-                  }}
+                  className="p-10 rounded-2xl text-center"
+                  style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
                 >
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-                    style={{ background: "oklch(0.94 0.06 260 / 0.15)" }}
+                    style={{ background: "#131a2e" }}
                   >
-                    <CheckCircle2 size={32} style={{ color: "oklch(0.46 0.18 260)" }} />
+                    <CheckCircle2 size={32} style={{ color: "#4a6cf7" }} />
                   </div>
                   <h2
                     className="font-bold text-2xl mb-3"
-                    style={{ fontFamily: "var(--font-display)", color: "oklch(0.18 0.01 260)" }}
+                    style={{ fontFamily: "var(--font-display)", color: "white" }}
                   >
                     Request received!
                   </h2>
-                  <p className="text-base leading-relaxed" style={{ color: "oklch(0.52 0.01 260)" }}>
-                    Thank you, <strong>{formData.name}</strong>. One of our consultants will be in touch within one business day to confirm your discovery call.
+                  <p className="text-base leading-relaxed mb-2" style={{ color: "#94a3b8" }}>
+                    Thank you, <span style={{ color: "white" }}>{formData.name}</span>. We'll be in touch within one business day to confirm your discovery call.
                   </p>
-                  <p className="text-sm mt-4" style={{ color: "oklch(0.62 0.01 260)" }}>
-                    Check your inbox at <strong>{formData.email}</strong> for a confirmation.
+                  <p className="text-sm" style={{ color: "#64748b" }}>
+                    Check your inbox at <span style={{ color: "#94a3b8" }}>{formData.email}</span>.
                   </p>
                 </div>
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="p-8 rounded-xl border"
-                  style={{
-                    background: "oklch(0.99 0.002 85)",
-                    borderColor: "oklch(0.88 0.006 85)",
-                  }}
+                  className="p-8 rounded-2xl"
+                  style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
                 >
                   <h2
                     className="font-bold text-xl mb-6"
-                    style={{ fontFamily: "var(--font-display)", color: "oklch(0.18 0.01 260)" }}
+                    style={{ fontFamily: "var(--font-display)", color: "white" }}
                   >
                     Request a consultation
                   </h2>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-                    {/* Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label
-                        className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-                        style={{ color: "oklch(0.42 0.01 260)" }}
-                      >
-                        Full Name <span style={{ color: "oklch(0.46 0.18 260)" }}>*</span>
-                      </label>
+                      <label style={labelStyle}>Full Name <span style={{ color: "#4a6cf7" }}>*</span></label>
                       <input
                         type="text"
                         name="name"
@@ -239,26 +267,13 @@ export default function BookCall() {
                         onChange={handleChange}
                         placeholder="Jane Smith"
                         required
-                        className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
-                        style={{
-                          borderColor: "oklch(0.88 0.006 85)",
-                          background: "white",
-                          color: "oklch(0.18 0.01 260)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                        onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.46 0.18 260)"; }}
-                        onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.88 0.006 85)"; }}
+                        style={inputStyle}
+                        onFocus={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; }}
+                        onBlur={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; }}
                       />
                     </div>
-
-                    {/* Email */}
                     <div>
-                      <label
-                        className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-                        style={{ color: "oklch(0.42 0.01 260)" }}
-                      >
-                        Email Address <span style={{ color: "oklch(0.46 0.18 260)" }}>*</span>
-                      </label>
+                      <label style={labelStyle}>Email Address <span style={{ color: "#4a6cf7" }}>*</span></label>
                       <input
                         type="email"
                         name="email"
@@ -266,66 +281,36 @@ export default function BookCall() {
                         onChange={handleChange}
                         placeholder="jane@company.com"
                         required
-                        className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
-                        style={{
-                          borderColor: "oklch(0.88 0.006 85)",
-                          background: "white",
-                          color: "oklch(0.18 0.01 260)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                        onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.46 0.18 260)"; }}
-                        onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.88 0.006 85)"; }}
+                        style={inputStyle}
+                        onFocus={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; }}
+                        onBlur={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; }}
                       />
                     </div>
                   </div>
 
-                  {/* Company */}
-                  <div className="mb-5">
-                    <label
-                      className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "oklch(0.42 0.01 260)" }}
-                    >
-                      Company / Organisation
-                    </label>
+                  <div className="mb-4">
+                    <label style={labelStyle}>Company / Organisation</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Acme Corp"
-                      className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
-                      style={{
-                        borderColor: "oklch(0.88 0.006 85)",
-                        background: "white",
-                        color: "oklch(0.18 0.01 260)",
-                        fontFamily: "var(--font-body)",
-                      }}
-                      onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.46 0.18 260)"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "oklch(0.88 0.006 85)"; }}
+                      style={inputStyle}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; }}
                     />
                   </div>
 
-                  {/* Service */}
-                  <div className="mb-5">
-                    <label
-                      className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "oklch(0.42 0.01 260)" }}
-                    >
-                      What service are you interested in?
-                    </label>
+                  <div className="mb-4">
+                    <label style={labelStyle}>What service are you interested in?</label>
                     <select
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-all duration-200"
-                      style={{
-                        borderColor: "oklch(0.88 0.006 85)",
-                        background: "white",
-                        color: formData.service ? "oklch(0.18 0.01 260)" : "oklch(0.62 0.01 260)",
-                        fontFamily: "var(--font-body)",
-                      }}
-                      onFocus={(e) => { (e.currentTarget as HTMLSelectElement).style.borderColor = "oklch(0.46 0.18 260)"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLSelectElement).style.borderColor = "oklch(0.88 0.006 85)"; }}
+                      style={{ ...inputStyle, color: formData.service ? "#94a3b8" : "#64748b" }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; }}
                     >
                       <option value="">Select a service...</option>
                       {serviceOptions.map((opt) => (
@@ -334,14 +319,8 @@ export default function BookCall() {
                     </select>
                   </div>
 
-                  {/* Message */}
-                  <div className="mb-7">
-                    <label
-                      className="block text-xs font-semibold mb-1.5 uppercase tracking-wide"
-                      style={{ color: "oklch(0.42 0.01 260)" }}
-                    >
-                      Tell us about your project <span style={{ color: "oklch(0.46 0.18 260)" }}>*</span>
-                    </label>
+                  <div className="mb-6">
+                    <label style={labelStyle}>Tell us about your project <span style={{ color: "#4a6cf7" }}>*</span></label>
                     <textarea
                       name="message"
                       value={formData.message}
@@ -349,33 +328,25 @@ export default function BookCall() {
                       placeholder="Briefly describe what you're building, where you're stuck, or what kind of support you're looking for..."
                       required
                       rows={5}
-                      className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition-all duration-200 resize-none"
-                      style={{
-                        borderColor: "oklch(0.88 0.006 85)",
-                        background: "white",
-                        color: "oklch(0.18 0.01 260)",
-                        fontFamily: "var(--font-body)",
-                      }}
-                      onFocus={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = "oklch(0.46 0.18 260)"; }}
-                      onBlur={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = "oklch(0.88 0.006 85)"; }}
+                      style={{ ...inputStyle, resize: "none" }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; }}
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 text-sm font-semibold rounded transition-all duration-200 flex items-center justify-center gap-2"
+                    className="w-full py-3.5 text-sm font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 mb-4"
                     style={{
-                      background: loading ? "oklch(0.65 0.12 260)" : "oklch(0.46 0.18 260)",
+                      background: loading ? "#374151" : "#4a6cf7",
                       color: "white",
+                      border: "none",
+                      cursor: loading ? "not-allowed" : "pointer",
                       fontFamily: "var(--font-body)",
                     }}
-                    onMouseEnter={(e) => {
-                      if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.38 0.18 260)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "oklch(0.46 0.18 260)";
-                    }}
+                    onMouseEnter={(e) => { if (!loading) e.currentTarget.style.background = "#3b5ce5"; }}
+                    onMouseLeave={(e) => { if (!loading) e.currentTarget.style.background = "#4a6cf7"; }}
                   >
                     {loading ? (
                       <>
@@ -390,8 +361,32 @@ export default function BookCall() {
                     )}
                   </button>
 
-                  <p className="text-xs text-center mt-4" style={{ color: "oklch(0.62 0.01 260)" }}>
-                    One of our consultants will respond within one business day to confirm your call.
+                  {/* Divider */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex-1 h-px" style={{ background: "#1e2a40" }} />
+                    <span className="text-xs" style={{ color: "#374151" }}>or reach out directly</span>
+                    <div className="flex-1 h-px" style={{ background: "#1e2a40" }} />
+                  </div>
+
+                  {/* Email button */}
+                  <a
+                    href="mailto:hello@scopedconsulting.co.nz"
+                    className="w-full flex items-center justify-center gap-2 py-3 text-sm font-semibold rounded-lg transition-all duration-200"
+                    style={{
+                      background: "transparent",
+                      color: "#4a6cf7",
+                      border: "1px solid #1e2a40",
+                      textDecoration: "none",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#4a6cf7"; e.currentTarget.style.background = "#0f1520"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1e2a40"; e.currentTarget.style.background = "transparent"; }}
+                  >
+                    <Mail size={14} />
+                    hello@scopedconsulting.co.nz
+                  </a>
+
+                  <p className="text-xs text-center mt-4" style={{ color: "#374151" }}>
+                    One of our consultants will respond within one business day.
                   </p>
                 </form>
               )}
@@ -399,6 +394,7 @@ export default function BookCall() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
