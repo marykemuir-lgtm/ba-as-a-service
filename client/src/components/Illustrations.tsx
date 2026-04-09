@@ -6,7 +6,7 @@
 
 const S = "#0d1117";
 const B = "#4a6cf7";
-const D = "#d4c9b0";
+const D = "#8a7d6b";
 const LP = "round";
 
 /* ── Scene 01: The GAP — homepage hero ── */
