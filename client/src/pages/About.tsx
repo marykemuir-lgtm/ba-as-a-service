@@ -50,11 +50,11 @@ export default function About() {
               <div style={{ fontSize: 12, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em" }}>Founder · AI Requirements Strategist · BA/PM/PO</div>
             </div>
           </div>
-          <div style={{ borderLeft: `0.5px solid ${SAND}`, overflow: "hidden", minHeight: 520 }}>
+          <div style={{ borderLeft: `0.5px solid ${SAND}`, display: "flex", alignItems: "center", justifyContent: "center", padding: 48, background: CREAM }}>
             <img
               src={PORTRAIT}
               alt="Maryke-Lee Muir"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+              style={{ width: 300, height: 380, objectFit: "cover", objectPosition: "center top", display: "block", border: `0.5px solid ${SAND}` }}
             />
           </div>
         </div>
