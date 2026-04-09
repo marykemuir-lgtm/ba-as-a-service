@@ -106,7 +106,7 @@ export default function Home() {
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 48, flexWrap: "wrap", gap: 16 }}>
             <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 36, fontWeight: 500, color: NAV, lineHeight: 1.2 }}>What we do</div>
-            <div style={{ fontSize: 13, color: MUTED, maxWidth: 240, lineHeight: 1.5, textAlign: "right" }}>Fixed-scope. Fractional. No full-time overhead.</div>
+            <div style={{ fontSize: 16, color: MUTED, lineHeight: 1.5, textAlign: "right" }}>Fixed-scope. Fractional. No full-time overhead.</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0" style={{ border: `0.5px solid ${SAND}` }}>
             {[
@@ -134,7 +134,7 @@ export default function Home() {
       <section style={{ borderBottom: `0.5px solid ${SAND}` }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div style={{ padding: "72px 48px", borderRight: `0.5px solid ${SAND}` }}>
-            <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#9a9a9a", marginBottom: 32, fontWeight: 500 }}>About</p>
+            <p style={{ fontSize: 16, color: "#9a9a9a", marginBottom: 32 }}>About</p>
             <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 30, fontWeight: 500, lineHeight: 1.25, color: NAV, marginBottom: 20 }}>Most startups don't fail because of bad ideas.</div>
             <p style={{ fontSize: 15, color: BODY, lineHeight: 1.75, marginBottom: 28, maxWidth: 460 }}>
               They fail because nobody helped them translate the idea into something a dev team could build. I've spent a decade bridging that gap — and I built Scoped Consulting to make that expertise accessible without the agency overhead.
