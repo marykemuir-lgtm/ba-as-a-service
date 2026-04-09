@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { IllustrationGap, IllustrationAccents } from "@/components/Illustrations";
+import { IllustrationGap } from "@/components/Illustrations";
 
 const CREAM = "#f5f0e8";
 const NAV = "#0d1117";
@@ -102,8 +102,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Accent divider ── */}
-      <IllustrationAccents />
 
       {/* ── Services preview ── */}
       <section style={{ padding: "80px 0", borderBottom: `0.5px solid ${SAND}` }}>
