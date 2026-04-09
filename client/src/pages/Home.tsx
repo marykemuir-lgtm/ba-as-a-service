@@ -62,39 +62,43 @@ export default function Home() {
         <div className="container">
           <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#9a9a9a", marginBottom: 32, fontWeight: 500 }}>The GAP concept</p>
 
-          {/* Two problem panels */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0" style={{ border: `0.5px solid ${SAND}`, maxWidth: 860 }}>
-            <div style={{ padding: "32px 28px", borderRight: `0.5px solid ${SAND}` }}>
-              <div style={{ fontSize: 11, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>The problem</div>
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 19, fontWeight: 500, marginBottom: 10, color: NAV }}>What you imagine</div>
-              <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>A seamless AI agent. Intelligent workflows. A product that understands your customers and just works.</div>
+          {/* Three-column row: panels left, illustration right */}
+          <div style={{ display: "flex", maxWidth: 1000, alignItems: "stretch" }}>
+
+            {/* Two problem panels stacked */}
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", border: `0.5px solid ${SAND}` }}>
+              <div style={{ padding: "28px 28px", borderBottom: `0.5px solid ${SAND}`, flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>The problem</div>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 18, fontWeight: 500, marginBottom: 8, color: NAV }}>What you imagine</div>
+                <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>A seamless AI agent. Intelligent workflows. A product that understands your customers and just works.</div>
+              </div>
+              <div style={{ padding: "28px 28px", flex: 1 }}>
+                <div style={{ fontSize: 11, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>Without the right requirements</div>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 18, fontWeight: 500, marginBottom: 8, color: NAV }}>What gets built</div>
+                <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>A confused codebase. Half-formed logic. An AI that doesn't know what it's supposed to do — because nobody told it clearly.</div>
+              </div>
             </div>
-            <div style={{ padding: "32px 28px" }}>
-              <div style={{ fontSize: 11, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Without the right requirements</div>
-              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 19, fontWeight: 500, marginBottom: 10, color: NAV }}>What gets built</div>
-              <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>A confused codebase. Half-formed logic. An AI that doesn't know what it's supposed to do — because nobody told it clearly.</div>
+
+            {/* Illustration — beside the panels */}
+            <div style={{ flex: 1.2, border: `0.5px solid ${SAND}`, borderLeft: "none", display: "flex", alignItems: "center", justifyContent: "center", padding: 16, background: "#faf7f2", opacity: 0.8 }}>
+              <IllustrationGap width="100%" />
             </div>
           </div>
 
-          {/* Arrow resolution */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 860, padding: "20px 0" }}>
+          {/* Arrow + resolution block — full width below */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16, maxWidth: 1000, padding: "16px 0" }}>
             <div style={{ flex: 1, height: "0.5px", background: SAND }}></div>
             <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: BLUE, fontWeight: 500, whiteSpace: "nowrap" }}>↓ Scoped closes the gap ↓</div>
             <div style={{ flex: 1, height: "0.5px", background: SAND }}></div>
           </div>
 
-          {/* Dark resolution block */}
-          <div style={{ background: NAV, padding: "28px 32px", maxWidth: 860, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ background: NAV, padding: "28px 32px", maxWidth: 1000, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
             <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 20, fontWeight: 400, fontStyle: "italic", color: CREAM, lineHeight: 1.45, margin: 0 }}>
               "Your AI agent is only as good as the requirements behind it."
             </p>
             <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: BLUE, border: `0.5px solid ${BLUE}`, padding: "6px 14px", whiteSpace: "nowrap", flexShrink: 0 }}>That's what we do</div>
           </div>
 
-          {/* Illustration — tucked at bottom as decoration */}
-          <div style={{ maxWidth: 860, marginTop: 40, opacity: 0.35, display: "flex", justifyContent: "flex-end" }}>
-            <IllustrationGap width={280} />
-          </div>
         </div>
       </section>
 
