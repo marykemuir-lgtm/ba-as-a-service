@@ -18,9 +18,9 @@ export default function Home() {
 
       {/* ── Ticker ── */}
       <div style={{ borderBottom: `0.5px solid ${SAND}`, overflow: "hidden" }}>
-        <div style={{ display: "flex", gap: 40, padding: "14px 0", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#9a9a9a", whiteSpace: "nowrap" }}>
+        <div style={{ display: "flex", gap: 40, padding: "14px 0", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "#9a9a9a", whiteSpace: "nowrap", justifyContent: "center" }}>
          {["AI Requirements Strategy", "Fixed-scope engagements", "No retainers. No lock-in.", "AU & NZ", "Startups & small business"].map((item, i) => (
-            <span key={i} style={{ paddingLeft: i === 0 ? 48 : 0 }}>
+            <span key={i}>
               {item}<span style={{ color: BLUE, margin: "0 16px" }}>·</span>
             </span>
           ))}
