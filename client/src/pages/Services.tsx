@@ -1,384 +1,206 @@
-/*
- * Services.tsx — Scoped Consulting
- * Design: Dark theme — dot pattern hero, outcome-focused copy, pricing cards
- */
 import { Link } from "wouter";
-import { ArrowRight, FileText, Users, Layers, GitBranch, Briefcase, MapPin, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { IllustrationBlueprint, IllustrationAccents } from "@/components/Illustrations";
 
-const services = [
-  {
-    icon: FileText,
-    number: "01",
-    title: "Business Analysis & Requirements",
-    tagline: "Translate business needs into dev-ready docs",
-    desc: "Your developers can only build what they understand. We work with your stakeholders to turn vague ideas into structured user stories, acceptance criteria, and process maps — so nothing gets lost between business intent and technical delivery.",
-    deliverables: [
-      "Business Requirements Document (BRD)",
-      "User stories & acceptance criteria",
-      "Process mapping (BPMN)",
-      "Functional specifications",
-      "System interaction design",
-    ],
-  },
-  {
-    icon: Users,
-    number: "02",
-    title: "Product Discovery Workshops",
-    tagline: "Align your team before you build",
-    desc: "Most costly mistakes happen before development starts. We facilitate a structured discovery workshop to define your product vision, surface assumptions, align stakeholders, and establish MVP scope — saving weeks of expensive rework down the line.",
-    deliverables: [
-      "Problem statement & opportunity definition",
-      "User persona development",
-      "Feature prioritisation",
-      "MVP scope definition",
-      "Product roadmap guidance",
-    ],
-  },
-  {
-    icon: Layers,
-    number: "03",
-    title: "Backlog Management & Grooming",
-    tagline: "A well-maintained backlog is a team superpower",
-    desc: "A chaotic backlog slows teams down and creates misalignment. We bring structure to your product backlog — prioritising features, writing and refining user stories, and facilitating grooming sessions so your team always knows what's next.",
-    deliverables: [
-      "Prioritised product backlog",
-      "Sprint-ready user stories",
-      "Backlog grooming facilitation",
-      "Roadmap alignment",
-      "Definition of Ready (DoR) setup",
-    ],
-  },
-  {
-    icon: MapPin,
-    number: "04",
-    title: "Process Mapping & System Design",
-    tagline: "Visualise the system before you build it",
-    desc: "Understanding how your business processes and systems interact is critical before building a digital solution. We map current and future-state processes, identify pain points, and produce system design documentation that bridges business intent and technical architecture.",
-    deliverables: [
-      "As-is and to-be process maps",
-      "Data flow diagrams",
-      "System context diagrams",
-      "Integration requirements",
-      "Gap analysis report",
-    ],
-  },
-  {
-    icon: GitBranch,
-    number: "05",
-    title: "Fractional Product Owner",
-    tagline: "Senior PO expertise, without the salary",
-    desc: "Not every organisation needs a full-time PO — but every team needs PO-level thinking. We attend standups, refine backlogs, make prioritisation calls, and keep your delivery aligned with business goals. All the value, none of the overhead.",
-    deliverables: [
-      "Sprint planning facilitation",
-      "Daily standup attendance",
-      "Backlog refinement sessions",
-      "Vendor coordination",
-      "Product roadmap support",
-    ],
-  },
-  {
-    icon: Briefcase,
-    number: "06",
-    title: "Delivery Lead & Project Oversight",
-    tagline: "Keep delivery on track and stakeholders informed",
-    desc: "When you need someone to own the delivery process end-to-end, we step in as Delivery Lead — coordinating teams, managing dependencies, tracking milestones, and ensuring stakeholders are informed and aligned throughout the project lifecycle.",
-    deliverables: [
-      "Delivery plan & milestones",
-      "Risk and issue management",
-      "Stakeholder status reporting",
-      "Team coordination",
-      "Post-delivery retrospective",
-    ],
-  },
-];
+const CREAM = "#f5f0e8";
+const NAV = "#0d1117";
+const SAND = "#d4c9b0";
+const BLUE = "#4a6cf7";
+const MUTED = "#6b6b6b";
+const BODY = "#3a3a3a";
 
 const packages = [
   {
-    tier: "Starter",
+    num: "01",
+    tag: "Entry point",
+    name: "Clarity Sprint",
+    duration: "1 week · Fixed scope",
+    desc: "Not sure where to start? One focused week to audit what you have, find the gaps, and hand you a backlog you can act on immediately. Low commitment, high signal.",
+    includes: [
+      "Requirements audit across existing scope",
+      "Gap analysis with prioritised risk flags",
+      "Actionable, prioritised backlog",
+      "30-minute debrief and Q&A",
+    ],
     price: "$1,800",
-    period: "From · Business Analysis",
-    description: "Structured documentation and analysis for digital products or system implementations.",
-    includes: [
-      "User stories & acceptance criteria",
-      "Process mapping",
-      "Functional documentation",
-      "Backlog preparation",
-    ],
-    note: "Ideal for pre-development readiness.",
-    featured: false,
+    priceNote: "NZD ex GST · one-off",
+    cta: "Start here",
+    flagship: false,
   },
   {
-    tier: "Most Popular",
-    price: "$2,500",
-    period: "From · Product Discovery",
-    description: "A structured engagement to turn your idea into clear product scope and development-ready requirements.",
+    num: "02",
+    tag: "Core engagement",
+    name: "Discovery & Definition",
+    duration: "2–3 weeks · Fixed scope",
+    desc: "Full requirements work from discovery through to documented definition. Everything your dev team needs to build with confidence — no guesswork, no back-and-forth.",
     includes: [
-      "Discovery workshop",
-      "MVP feature definition",
-      "Backlog outline",
-      "Initial user stories",
-      "Delivery guidance",
+      "Stakeholder discovery sessions",
+      "User stories and acceptance criteria",
+      "Process mapping and business requirements",
+      "Dev-ready handover documentation",
     ],
-    note: "Typical engagement: 2–4 days of consulting.",
-    featured: true,
+    price: "$5,500",
+    priceNote: "NZD ex GST · one-off",
+    cta: "Get started",
+    flagship: false,
   },
   {
-    tier: "Ongoing",
-    price: "$2,200",
-    period: "Per month · Fractional PO & Delivery",
-    description: "Ongoing support for organisations building digital solutions who need consistent delivery structure.",
+    num: "03",
+    tag: "Ongoing",
+    name: "Fractional BA/PO",
+    duration: "Monthly · Min 2 months",
+    desc: "Senior BA and Product Owner coverage on a fixed monthly basis. Embedded in your sprints, without the overhead of a full-time hire.",
     includes: [
-      "Backlog management",
-      "Sprint planning support",
-      "Vendor collaboration",
-      "Delivery structure guidance",
+      "Sprint planning and backlog grooming",
+      "Ongoing requirements and user stories",
+      "Delivery governance and reporting",
+      "Stakeholder management support",
     ],
-    note: "Typical: 1–2 days per month.",
-    featured: false,
+    price: "$4,200",
+    priceNote: "NZD ex GST · per month",
+    cta: "Book a call first",
+    flagship: false,
   },
 ];
-
-const DotPattern = () => (
-  <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden">
-    <svg
-      className="absolute right-0 top-0 w-full h-full"
-      style={{ opacity: 0.12 }}
-      viewBox="0 0 400 400"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill="#4a6cf7"/>
-        </pattern>
-      </defs>
-      <rect width="400" height="400" fill="url(#dots)"/>
-    </svg>
-  </div>
-);
 
 export default function Services() {
   const revealRef = useScrollReveal();
 
   return (
-    <div ref={revealRef} style={{ background: "#080b12" }}>
+    <div ref={revealRef} style={{ background: CREAM }}>
 
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{ background: "#080b12" }}
-      >
-        <DotPattern />
-        <div className="container relative z-10">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold mb-4" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              What we do
-            </p>
-            <h1
-              className="display-headline text-4xl lg:text-5xl mb-6"
-              style={{ lineHeight: 1.1, color: "white" }}
-            >
-              Senior expertise.{" "}
-              <span style={{ color: "#4a6cf7" }}>No full-time overhead.</span>
-            </h1>
-            <p
-              className="text-lg leading-relaxed mb-8 max-w-xl"
-              style={{ color: "#94a3b8", fontFamily: "var(--font-body)" }}
-            >
-              Every engagement is fixed-scope and fixed-price. You know exactly what you're getting, what it costs, and when it's done — before we start.
-            </p>
-            <div
-              className="flex flex-wrap gap-6 pt-6"
-              style={{ borderTop: "0.5px solid #151b28" }}
-            >
-              {["Fixed-scope engagements", "No lock-in contracts", "Startup-friendly pricing", "100% remote-ready"].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#4a6cf7", flexShrink: 0 }}></span>
-                  <span className="text-sm" style={{ color: "#64748b" }}>{item}</span>
-                </div>
-              ))}
+      {/* ── Hero ── */}
+      <section style={{ padding: "80px 0 64px", borderBottom: `0.5px solid ${SAND}` }}>
+        <div className="container">
+          <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: BLUE, marginBottom: 20, fontWeight: 500 }}>Pricing · Fixed scope · No surprises</p>
+          <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(36px, 5vw, 48px)", fontWeight: 500, lineHeight: 1.1, color: NAV, letterSpacing: "-0.02em", marginBottom: 20 }}>
+            You know the cost<br />before we start.<br /><em style={{ fontStyle: "italic", color: BLUE }}>Always.</em>
+          </h1>
+          <p style={{ fontSize: 16, color: BODY, maxWidth: 520, lineHeight: 1.75 }}>
+            Every engagement is scoped and priced upfront. No retainers, no billable hour drift, no awkward conversations mid-project.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Flagship ── */}
+      <section style={{ background: NAV, borderBottom: `0.5px solid #1a2030` }}>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 py-16" style={{ gap: 48 }}>
+            <div>
+              <div style={{ display: "inline-block", background: BLUE, color: "white", fontSize: 11, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", padding: "5px 14px", marginBottom: 24 }}>Flagship offer</div>
+              <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(28px, 4vw, 36px)", fontWeight: 500, color: CREAM, lineHeight: 1.15, marginBottom: 16 }}>AI Requirements Blueprint</h2>              <p style={{ fontSize: 15, color: "#a0a0a0", lineHeight: 1.75, maxWidth: 480, marginBottom: 32 }}>
+                The thing most AI builds skip — and why they fail. Before a single line of code, we define exactly what your AI agent needs to know, do, and decide. You get a complete requirements spec your dev team can actually build from.
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 36px", display: "flex", flexDirection: "column", gap: 12 }}>
+                {[
+                  "AI agent scope and decision logic — what it does, what it doesn't, and why",
+                  "Full requirements specification, structured for dev handover",
+                  "User stories with acceptance criteria",
+                  "Integration, data, and edge case requirements",
+                  "One review session included",
+                ].map((item) => (
+                  <li key={item} style={{ fontSize: 13, color: "#c0c0c0", display: "flex", alignItems: "flex-start", gap: 12, lineHeight: 1.5 }}>
+                    <span style={{ display: "inline-block", width: 16, height: 1, background: BLUE, marginTop: 9, flexShrink: 0 }}></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/book"
+                style={{ display: "inline-block", background: BLUE, color: "white", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", padding: "13px 28px", textDecoration: "none" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#3b5ce5"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = BLUE; }}
+              >
+                Book a discovery call
+              </Link>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-end", paddingTop: 8, gap: 32 }}>
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 64, fontWeight: 400, color: CREAM, lineHeight: 1, marginBottom: 6 }}>$3,500</div>
+                <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555" }}>NZD ex GST · Fixed fee</div>
+              </div>
+              <IllustrationBlueprint width={300} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services list */}
-      <section className="py-16" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
+      {/* ── Supporting tiers ── */}
+      <section style={{ padding: "64px 0", borderBottom: `0.5px solid ${SAND}` }}>
         <div className="container">
-          <p className="text-xs font-semibold mb-10" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>Services</p>
-          <div className="flex flex-col">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.number}
-                  className="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 py-10"
-                  style={{
-                    borderBottom: i < services.length - 1 ? "0.5px solid #151b28" : "none",
-                    transitionDelay: `${i * 60}ms`,
-                  }}
-                >
-                  {/* Number + icon */}
-                  <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-4">
-                    <span
-                      className="text-5xl font-bold leading-none"
-                      style={{ fontFamily: "var(--font-display)", color: "#1e2a40" }}
-                    >
-                      {service.number}
-                    </span>
-                    <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center"
-                      style={{ background: "#131a2e" }}
-                    >
-                      <Icon size={16} style={{ color: "#4a6cf7" }} />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:col-span-6">
-                    <p className="text-xs font-semibold mb-2" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                      {service.tagline}
-                    </p>
-                    <h2
-                      className="font-bold text-xl mb-4"
-                      style={{ fontFamily: "var(--font-display)", color: "white" }}
-                    >
-                      {service.title}
-                    </h2>
-                    <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>
-                      {service.desc}
-                    </p>
-                  </div>
-
-                  {/* Deliverables */}
-                  <div className="lg:col-span-4">
-                    <div
-                      className="p-5 rounded-xl"
-                      style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
-                    >
-                      <p className="text-xs font-semibold mb-3" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                        What you get
-                      </p>
-                      <ul className="flex flex-col gap-2">
-                        {service.deliverables.map((d) => (
-                          <li key={d} className="flex items-start gap-2">
-                            <span
-                              className="w-1 h-1 rounded-full shrink-0 mt-2"
-                              style={{ background: "#4a6cf7" }}
-                            />
-                            <span className="text-xs leading-relaxed" style={{ color: "#94a3b8" }}>{d}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-20" style={{ background: "#080b12", borderTop: "0.5px solid #151b28" }}>
-        <div className="container">
-          <div className="reveal mb-10">
-            <p className="text-xs font-semibold mb-3" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              Pricing
-            </p>
-            <h2 className="display-headline text-3xl lg:text-4xl mb-4" style={{ color: "white" }}>
-              Fixed-scope. Fixed-price. No surprises.
-            </h2>
-            <p className="text-base leading-relaxed max-w-xl" style={{ color: "#64748b" }}>
-              Every engagement is quoted upfront. You know exactly what you're paying before we start — no hourly billing, no scope creep surprises.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            {packages.map((pkg, i) => (
+          <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#9a9a9a", marginBottom: 40, fontWeight: 500 }}>Supporting engagements</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0" style={{ border: `0.5px solid ${SAND}` }}>
+            {packages.map((pkg, i, arr) => (
               <div
-                key={pkg.tier}
-                className="reveal p-6 rounded-xl"
-                style={{
-                  background: pkg.featured ? "#0f1a35" : "#0d1220",
-                  border: pkg.featured ? "1.5px solid #4a6cf7" : "0.5px solid #1e2a40",
-                  transitionDelay: `${i * 100}ms`,
-                }}
+                key={pkg.num}
+                className="reveal"
+                style={{ padding: "36px 28px", borderRight: i < arr.length - 1 ? `0.5px solid ${SAND}` : "none", display: "flex", flexDirection: "column" }}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-xs font-semibold" style={{ color: pkg.featured ? "#6b8ef0" : "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                    {pkg.tier}
-                  </p>
-                  {pkg.featured && (
-                    <span
-                      className="text-xs font-semibold px-2 py-0.5 rounded-full"
-                      style={{ background: "#4a6cf7", color: "white", fontSize: "9px" }}
-                    >
-                      RECOMMENDED
-                    </span>
-                  )}
-                </div>
-                <p className="display-headline text-3xl mb-1" style={{ color: "#4a6cf7", lineHeight: 1 }}>
-                  {pkg.price}
-                </p>
-                <p className="text-xs mb-4" style={{ color: "#64748b" }}>{pkg.period}</p>
-                <p className="text-xs leading-relaxed mb-5" style={{ color: "#64748b" }}>{pkg.description}</p>
-                <div style={{ borderTop: "0.5px solid #1e2a40", paddingTop: "14px" }}>
-                  <p className="text-xs font-semibold mb-3" style={{ color: "#374151", textTransform: "uppercase", letterSpacing: "0.06em" }}>Includes</p>
-                  <ul className="flex flex-col gap-2">
-                    {pkg.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="w-1 h-1 rounded-full shrink-0 mt-1.5" style={{ background: "#4a6cf7" }} />
-                        <span className="text-xs leading-relaxed" style={{ color: "#94a3b8" }}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="text-xs italic mt-4" style={{ color: "#374151" }}>{pkg.note}</p>
+                <div style={{ fontSize: 11, letterSpacing: "0.1em", color: BLUE, marginBottom: 20, fontWeight: 500, textTransform: "uppercase" }}>{pkg.num} · {pkg.tag}</div>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 22, fontWeight: 500, color: NAV, marginBottom: 6, lineHeight: 1.2 }}>{pkg.name}</div>
+                <div style={{ fontSize: 12, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 20 }}>{pkg.duration}</div>
+                <div style={{ fontSize: 13, color: BODY, lineHeight: 1.7, marginBottom: 24, flex: 1 }}>{pkg.desc}</div>
+                <div style={{ height: "0.5px", background: SAND, marginBottom: 20 }}></div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "flex", flexDirection: "column", gap: 9 }}>
+                  {pkg.includes.map((item) => (
+                    <li key={item} style={{ fontSize: 12, color: MUTED, display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.5 }}>
+                      <span style={{ display: "inline-block", width: 12, height: 1, background: SAND, marginTop: 8, flexShrink: 0 }}></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 32, fontWeight: 400, color: NAV, marginBottom: 4 }}>{pkg.price}</div>
+                <div style={{ fontSize: 11, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 20 }}>{pkg.priceNote}</div>
+                <Link
+                  href="/book"
+                  style={{ fontSize: 12, fontWeight: 500, color: NAV, border: `0.5px solid ${NAV}`, padding: "10px 18px", textAlign: "center", textDecoration: "none", letterSpacing: "0.04em", textTransform: "uppercase", marginTop: "auto", display: "block" }}
+                  onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = NAV; el.style.color = CREAM; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = NAV; }}
+                >
+                  {pkg.cta}
+                </Link>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div
-            className="reveal p-5 rounded-xl"
-            style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
-          >
-            <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>
-              <span style={{ color: "#94a3b8", fontWeight: 500 }}>Larger engagements</span> are quoted separately depending on scope.{" "}
-              <span style={{ color: "#94a3b8", fontWeight: 500 }}>Startup-friendly pricing</span> is available for early-stage companies with limited budgets — just ask.
-            </p>
+      {/* ── Fine print ── */}
+      <IllustrationAccents />
+      <section style={{ borderBottom: `0.5px solid ${SAND}` }}>
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-10">
+            {[
+              { title: "GST & currency", desc: "All prices NZD, ex GST. GST added where applicable. AU clients invoiced in AUD at the prevailing exchange rate." },
+              { title: "Scope changes", desc: "Fixed price means fixed price. Any scope change is agreed in writing before additional work begins — no surprises, ever." },
+              { title: "Not sure which fits?", desc: "Book a free 30-minute call. Most clients start with a Clarity Sprint — the fastest way to get signal on what you actually need." },
+            ].map((item, i, arr) => (
+              <div key={item.title} style={{ padding: "0 32px 0 0", borderRight: i < arr.length - 1 ? `0.5px solid ${SAND}` : "none", marginRight: i < arr.length - 1 ? 32 : 0, paddingRight: i < arr.length - 1 ? 32 : 0 }}>
+                <div style={{ fontSize: 12, fontWeight: 500, color: NAV, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.06em" }}>{item.title}</div>
+                <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>{item.desc}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24" style={{ background: "#4a6cf7" }}>
+      {/* ── CTA ── */}
+      <section style={{ padding: "80px 0", textAlign: "center", borderBottom: `0.5px solid ${SAND}` }}>
         <div className="container">
-          <div className="reveal max-w-2xl">
-            <p className="text-xs font-semibold mb-4" style={{ color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              Ready to get started?
-            </p>
-            <h2
-              className="display-headline text-3xl lg:text-5xl mb-6"
-              style={{ color: "white", lineHeight: 1.15 }}
-            >
-              Not sure which service you need?<br />Let's figure it out together.
-            </h2>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.8)" }}>
-              Book a free 30-minute discovery call. We'll listen to your situation and recommend exactly what you need — no upsell, no pressure.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/book"
-                className="flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-lg transition-all duration-200 inline-flex"
-                style={{ background: "white", color: "#4a6cf7", fontFamily: "var(--font-body)", textDecoration: "none" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#f0f4ff"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "white"; }}
-              >
-                Book a Free Discovery Call
-                <ArrowRight size={16} />
-              </Link>
+          <div className="reveal">
+            <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 500, color: NAV, marginBottom: 12, lineHeight: 1.2 }}>
+              Still figuring it out?<br />That's what the call is for.
             </div>
+            <p style={{ fontSize: 15, color: MUTED, marginBottom: 32 }}>Free, 30 minutes, no pitch. Just a conversation about where you are and whether Scoped can help.</p>
+            <Link
+              href="/book"
+              style={{ display: "inline-block", background: NAV, color: CREAM, padding: "13px 32px", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#1a2030"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = NAV; }}
+            >
+              Book a free discovery call
+            </Link>
           </div>
         </div>
       </section>
@@ -386,3 +208,4 @@ export default function Services() {
     </div>
   );
 }
+
