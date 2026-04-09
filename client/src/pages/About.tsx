@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { IllustrationFounder, IllustrationAccents } from "@/components/Illustrations";
+import { IllustrationAccents } from "@/components/Illustrations";
 
 const CREAM = "#f5f0e8";
 const NAV = "#0d1117";
@@ -50,16 +50,12 @@ export default function About() {
               <div style={{ fontSize: 12, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em" }}>Founder · AI Requirements Strategist · BA/PM/PO</div>
             </div>
           </div>
-          <div style={{ position: "relative", borderLeft: `0.5px solid ${SAND}`, background: "#e8e0d0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", padding: "48px 48px 0" }}>
+          <div style={{ borderLeft: `0.5px solid ${SAND}`, overflow: "hidden", minHeight: 520 }}>
             <img
               src={PORTRAIT}
               alt="Maryke-Lee Muir"
-              style={{ width: "100%", maxWidth: 340, display: "block", objectFit: "cover", objectPosition: "top" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
             />
-            {/* illustration overlay bottom-right */}
-            <div style={{ position: "absolute", bottom: 16, right: 16, opacity: 0.5 }}>
-              <IllustrationFounder width={160} />
-            </div>
           </div>
         </div>
       </section>
