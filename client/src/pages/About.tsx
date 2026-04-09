@@ -1,266 +1,125 @@
-/*
- * About.tsx — Scoped Consulting
- * Design: Dark theme — bold opening, full-size portrait, values, expertise tags
- */
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { IllustrationFounder, IllustrationAccents } from "@/components/Illustrations";
 
+const CREAM = "#f5f0e8";
+const NAV = "#0d1117";
+const SAND = "#d4c9b0";
+const BLUE = "#4a6cf7";
+const MUTED = "#6b6b6b";
+const BODY = "#3a3a3a";
 const PORTRAIT = "/images/Maryke_Professional_Headshot.png";
 
 const values = [
-  {
-    title: "Clarity over complexity",
-    desc: "Good consulting makes the complex simple. Every artefact and conversation should leave your team with more clarity, not less.",
-  },
-  {
-    title: "Honest, direct communication",
-    desc: "You'll always know where things stand. If something isn't working, we'll tell you — clearly and early, not at the end when it's too late.",
-  },
-  {
-    title: "Outcomes over outputs",
-    desc: "The goal isn't to produce documents. The goal is to help your team build the right thing. Every deliverable should serve that purpose.",
-  },
-  {
-    title: "People before process",
-    desc: "Frameworks are tools, not rules. The best outcomes come from understanding the humans involved and designing the process around them.",
-  },
+  { title: "Clarity over complexity", desc: "Good consulting makes the complex simple. Every artefact and conversation should leave your team with more clarity, not less." },
+  { title: "Honest, direct communication", desc: "You'll always know where things stand. If something isn't working, we'll tell you — clearly and early, not at the end." },
+  { title: "Outcomes over outputs", desc: "The goal isn't to produce documents. The goal is to help your team build the right thing. Every deliverable serves that purpose." },
+  { title: "People before process", desc: "Frameworks are tools, not rules. The best outcomes come from understanding the humans involved and designing around them." },
 ];
 
 const expertise = [
-  "Business Requirements Analysis",
-  "User Story Writing & Refinement",
-  "Product Discovery Facilitation",
-  "Backlog Management & Prioritisation",
-  "Process Mapping (BPMN)",
-  "System Design Documentation",
-  "Agile & Scrum Delivery",
-  "Stakeholder Management",
-  "Jira · Confluence · Notion · Miro",
-  "API & integration requirements",
-  "Data flow & system context diagrams",
-  "Figma collaboration",
+  "AI Requirements Strategy", "Business Requirements Analysis", "User Story Writing & Refinement",
+  "Product Discovery Facilitation", "Backlog Management & Prioritisation", "Process Mapping (BPMN)",
+  "System Design Documentation", "Agile & Scrum Delivery", "Stakeholder Management",
+  "Jira · Confluence · Notion · Miro", "API & Integration Requirements", "Data Flow & System Context Diagrams",
 ];
-
-const DotPattern = () => (
-  <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden">
-    <svg
-      className="absolute right-0 top-0 w-full h-full"
-      style={{ opacity: 0.12 }}
-      viewBox="0 0 400 400"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill="#4a6cf7"/>
-        </pattern>
-      </defs>
-      <rect width="400" height="400" fill="url(#dots)"/>
-    </svg>
-  </div>
-);
 
 export default function About() {
   const revealRef = useScrollReveal();
 
   return (
-    <div ref={revealRef} style={{ background: "#080b12" }}>
+    <div ref={revealRef} style={{ background: CREAM }}>
 
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{ background: "#080b12" }}
-      >
-        <DotPattern />
-        <div className="container relative z-10">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold mb-4" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              About Scoped Consulting
-            </p>
-            <h1
-              className="display-headline text-4xl lg:text-5xl mb-6"
-              style={{ lineHeight: 1.15, color: "white" }}
-            >
-              Most startups don't fail because of bad ideas.
-              <span className="block" style={{ color: "#4a6cf7" }}>
-                They fail because nobody helped them translate the idea into something a dev team could build.
-              </span>
+      {/* ── Hero split ── */}
+      <section style={{ borderBottom: `0.5px solid ${SAND}` }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div style={{ padding: "80px 48px 72px" }}>
+            <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: BLUE, marginBottom: 24, fontWeight: 500 }}>About the founder</p>
+            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(34px, 4vw, 46px)", fontWeight: 500, lineHeight: 1.1, color: NAV, letterSpacing: "-0.02em", marginBottom: 28 }}>
+              Most startups don't fail<br />because of bad ideas.
             </h1>
-            <p
-              className="text-lg leading-relaxed max-w-xl"
-              style={{ color: "#94a3b8", fontFamily: "var(--font-body)" }}
-            >
-              That's the gap Scoped Consulting exists to close. We give founders and small businesses access to the kind of senior BA, Product Owner, and Delivery expertise that usually only enterprise teams can afford — on a fixed-scope, fractional basis.
+            <p style={{ fontSize: 16, color: BODY, lineHeight: 1.8, marginBottom: 20, maxWidth: 480 }}>
+              They fail because nobody helped them translate the idea into something a dev team could build. I've spent a decade bridging that gap — across fintech, insurance, SaaS, and now AI-first products.
             </p>
+            <p style={{ fontSize: 16, color: BODY, lineHeight: 1.8, marginBottom: 32, maxWidth: 480 }}>
+              I built Scoped Consulting because senior BA and requirements expertise shouldn't cost six figures or require a full-time commitment. Founders deserve the same clarity that big companies pay consultancies a fortune for.
+            </p>
+            <div>
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 16, fontWeight: 500, color: NAV }}>Maryke-Lee Muir</div>
+              <div style={{ fontSize: 12, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em" }}>Founder · AI Requirements Strategist · BA/PM/PO</div>
+            </div>
+          </div>
+          <div style={{ position: "relative", borderLeft: `0.5px solid ${SAND}`, minHeight: 480, background: "#e8e0d0" }}>
+            <div
+              style={{ position: "absolute", inset: 0, background: `url(${PORTRAIT}) center top / cover no-repeat` }}
+            />
+            {/* illustration overlay bottom-right */}
+            <div style={{ position: "absolute", bottom: 24, right: 24, opacity: 0.6 }}>
+              <IllustrationFounder width={200} />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="py-20" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
+      {/* ── Values ── */}
+      <section style={{ padding: "72px 0", borderBottom: `0.5px solid ${SAND}` }}>
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-            {/* Text */}
-            <div className="reveal">
-              <p className="text-xs font-semibold mb-4" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-                The Founder
-              </p>
-              <h2
-                className="display-headline text-3xl lg:text-4xl mb-6"
-                style={{ color: "white", lineHeight: 1.2 }}
-              >
-                Hi, I'm Maryke-Lee Muir.
-              </h2>
-              <p className="text-base leading-relaxed mb-5" style={{ color: "#94a3b8" }}>
-                I've spent over a decade embedded in technology delivery — as a Business Analyst, Delivery Lead, Product Owner, and Scrum Master — working across financial services, insurance, and digital product companies in New Zealand and beyond.
-              </p>
-              <p className="text-base leading-relaxed mb-5" style={{ color: "#94a3b8" }}>
-                I've seen the same pattern repeat itself too many times: a founder with a brilliant idea, a dev team ready to build, and nothing clear in between. Requirements that are vague, scope that keeps shifting, and a budget that disappears before anything useful ships.
-              </p>
-              <p className="text-base leading-relaxed mb-8" style={{ color: "#94a3b8" }}>
-                I started Scoped Consulting because I wanted to fix that — for the startups and small businesses who can't afford a full-time BA or PO, but who desperately need that thinking before they hand work to developers.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                {[
-                  "Based in Auckland, NZ",
-                  "Serving AU & NZ",
-                  "10+ years experience",
-                  "40+ projects delivered",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: "#4a6cf7" }}
-                    />
-                    <span className="text-sm" style={{ color: "#64748b" }}>{item}</span>
-                  </div>
-                ))}
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-4">
+              <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#9a9a9a", marginBottom: 16, fontWeight: 500 }}>How I work</p>
+              <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28, fontWeight: 500, color: NAV, lineHeight: 1.25 }}>The principles behind every engagement</div>
             </div>
-
-            {/* Portrait — full size */}
-            <div className="reveal">
-              <div
-                className="rounded-2xl overflow-hidden"
-                style={{ background: "#0d1220", border: "0.5px solid #1e2a40" }}
-              >
-                <img
-                  src={PORTRAIT}
-                  alt="Maryke-Lee Muir — Founder, Scoped Consulting"
-                  className="w-full"
-                  style={{ display: "block" }}
-                />
-                <div
-                  className="px-6 py-5 text-center"
-                  style={{ borderTop: "0.5px solid #1e2a40" }}
-                >
-                  <p className="text-sm font-semibold mb-1" style={{ color: "white" }}>
-                    Maryke-Lee Muir
-                  </p>
-                  <p className="text-xs" style={{ color: "#4a6cf7" }}>
-                    Founder & Lead Consultant
-                  </p>
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-0" style={{ border: `0.5px solid ${SAND}` }}>
+              {values.map((v, i) => (
+                <div key={v.title} className="reveal" style={{ padding: "28px 24px", borderRight: i % 2 === 0 ? `0.5px solid ${SAND}` : "none", borderBottom: i < 2 ? `0.5px solid ${SAND}` : "none" }}>
+                  <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 16, fontWeight: 500, color: NAV, marginBottom: 10 }}>{v.title}</div>
+                  <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
                 </div>
-              </div>
+              ))}
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20" style={{ background: "#080b12", borderTop: "0.5px solid #151b28" }}>
-        <div className="container">
-          <div className="reveal mb-10">
-            <p className="text-xs font-semibold mb-3" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              Our Approach
-            </p>
-            <h2 className="display-headline text-3xl lg:text-4xl max-w-lg" style={{ color: "white" }}>
-              The principles that guide every engagement.
-            </h2>
-          </div>
+      {/* ── Accent divider ── */}
+      <IllustrationAccents />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {values.map((value, i) => (
-              <div
-                key={value.title}
-                className="reveal p-6"
-                style={{
-                  background: "#0d1220",
-                  border: "0.5px solid #1e2a40",
-                  borderLeft: "3px solid #4a6cf7",
-                  borderRadius: "0 12px 12px 0",
-                  transitionDelay: `${i * 80}ms`,
-                }}
-              >
-                <h3
-                  className="font-bold text-sm mb-2"
-                  style={{ fontFamily: "var(--font-display)", color: "white" }}
-                >
-                  {value.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>
-                  {value.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Expertise */}
-      <section className="py-16" style={{ background: "#0a0d16", borderTop: "0.5px solid #151b28" }}>
+      {/* ── Expertise tags ── */}
+      <section style={{ padding: "64px 0", borderBottom: `0.5px solid ${SAND}` }}>
         <div className="container">
-          <div className="reveal mb-8">
-            <p className="text-xs font-semibold" style={{ color: "#4a6cf7", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              Areas of Expertise
-            </p>
-          </div>
-          <div className="reveal flex flex-wrap gap-2">
+          <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#9a9a9a", marginBottom: 32, fontWeight: 500 }}>Areas of expertise</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {expertise.map((item) => (
-              <span
-                key={item}
-                className="px-3 py-1.5 rounded-full text-xs"
-                style={{
-                  background: "#0d1220",
-                  border: "0.5px solid #1e2a40",
-                  color: "#94a3b8",
-                }}
-              >
-                {item}
-              </span>
+              <span key={item} style={{ fontSize: 12, color: NAV, border: `0.5px solid ${SAND}`, padding: "6px 14px", background: "#fff8f0", letterSpacing: "0.02em" }}>{item}</span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24" style={{ background: "#4a6cf7" }}>
+      {/* ── Closing quote ── */}
+      <section style={{ padding: "72px 0", borderBottom: `0.5px solid ${SAND}`, background: NAV }}>
+        <div className="container" style={{ maxWidth: 700 }}>
+          <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(22px, 3vw, 30px)", fontWeight: 400, fontStyle: "italic", color: CREAM, lineHeight: 1.5, marginBottom: 20 }}>
+            "Anyone can build with AI now. Not everyone knows what to build."
+          </p>
+          <p style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555" }}>Maryke-Lee Muir · Founder, Scoped Consulting</p>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section style={{ padding: "80px 0", textAlign: "center" }}>
         <div className="container">
-          <div className="reveal max-w-2xl">
-            <p className="text-xs font-semibold mb-4" style={{ color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-              Work With Us
-            </p>
-            <h2
-              className="display-headline text-3xl lg:text-5xl mb-6"
-              style={{ color: "white", lineHeight: 1.15 }}
-            >
-              Let's talk about your product.
-            </h2>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.8)" }}>
-              Free 30-minute call. No pitch, no pressure — just an honest conversation about where you are and how we can help.
-            </p>
+          <div className="reveal">
+            <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 500, color: NAV, marginBottom: 12, lineHeight: 1.2 }}>Want to work together?</div>
+            <p style={{ fontSize: 15, color: MUTED, marginBottom: 32 }}>Start with a free 30-minute call.</p>
             <Link
               href="/book"
-              className="flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-lg transition-all duration-200 inline-flex"
-              style={{ background: "white", color: "#4a6cf7", fontFamily: "var(--font-body)", textDecoration: "none" }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#f0f4ff"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "white"; }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAV, color: CREAM, padding: "13px 32px", fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", textDecoration: "none" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#1a2030"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = NAV; }}
             >
-              Book a Free Discovery Call
-              <ArrowRight size={16} />
+              Book a discovery call <ArrowRight size={14} />
             </Link>
           </div>
         </div>
