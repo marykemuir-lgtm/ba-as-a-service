@@ -50,13 +50,15 @@ export default function About() {
               <div style={{ fontSize: 12, color: "#9a9a9a", textTransform: "uppercase", letterSpacing: "0.08em" }}>Founder · AI Requirements Strategist · BA/PM/PO</div>
             </div>
           </div>
-          <div style={{ position: "relative", borderLeft: `0.5px solid ${SAND}`, minHeight: 480, background: "#e8e0d0" }}>
-            <div
-              style={{ position: "absolute", inset: 0, background: `url(${PORTRAIT}) center top / cover no-repeat` }}
+          <div style={{ position: "relative", borderLeft: `0.5px solid ${SAND}`, background: "#e8e0d0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", padding: "48px 48px 0" }}>
+            <img
+              src={PORTRAIT}
+              alt="Maryke-Lee Muir"
+              style={{ width: "100%", maxWidth: 340, display: "block", objectFit: "cover", objectPosition: "top" }}
             />
             {/* illustration overlay bottom-right */}
-            <div style={{ position: "absolute", bottom: 24, right: 24, opacity: 0.6 }}>
-              <IllustrationFounder width={200} />
+            <div style={{ position: "absolute", bottom: 16, right: 16, opacity: 0.5 }}>
+              <IllustrationFounder width={160} />
             </div>
           </div>
         </div>
@@ -128,4 +130,3 @@ export default function About() {
     </div>
   );
 }
-
